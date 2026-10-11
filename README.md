@@ -5,7 +5,8 @@
 | Fichier | Rôle |
 |---|---|
 | `index.html` | Le site des invités |
-| `config.js` | **Toutes les infos** (date, lieux, programme, témoins, FAQ, Firebase) : c'est le seul fichier à modifier |
+| `config.js` | **Tous les textes** (date, mot, déroulé, lieux, FAQ, informations, contacts) |
+| `firebase-config.js` | Les 6 codes Firebase (à remplir une seule fois) |
 | `style.css` / `app.js` | Design et fonctionnement |
 | `admin.html` / `admin.js` | Espace mariés (connexion) : liste des réponses, compteurs, export Excel, playlist |
 | `photo.jpg` | La photo de l'en-tête (remplaçable par une autre portant le même nom) |
@@ -26,7 +27,7 @@
 3. Onglet *Règles* : collez le contenu de `firestore.rules`, **remplacez les deux e-mails** par les vôtres, puis *Publier*.
 4. **Authentication** → *Commencer* → activer *Adresse e-mail/Mot de passe* → onglet *Utilisateurs* → *Ajouter un utilisateur* (vous, et Narjes si elle veut aussi accéder aux réponses). Utilisez les mêmes e-mails que dans les règles.
 5. Authentication → *Paramètres* → *Domaines autorisés* → ajoutez `<votre-compte>.github.io`.
-6. ⚙️ *Paramètres du projet* → *Vos applications* → icône `</>` (Web) → enregistrez l'app → copiez l'objet `firebaseConfig` dans `config.js` (partie `firebase`), puis renvoyez `config.js` sur GitHub.
+6. ⚙️ *Paramètres du projet* → *Vos applications* → icône `</>` (Web) → enregistrez l'app → copiez les 6 valeurs de `firebaseConfig` dans `firebase-config.js`, puis renvoyez ce fichier sur GitHub.
 
 Testez : envoyez une réponse depuis le site, puis connectez-vous sur `admin.html`.
 

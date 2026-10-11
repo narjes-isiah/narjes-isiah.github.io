@@ -33,7 +33,7 @@ onAuthStateChanged(auth, user => {
     afficher();
   }, err => {
     console.error(err);
-    $("#lignes").innerHTML = `<tr><td colspan="7">Accès refusé : vérifiez que votre e-mail est bien listé dans les règles Firestore.</td></tr>`;
+    $("#lignes").innerHTML = `<tr><td colspan="6">Accès refusé : vérifiez que votre e-mail est bien listé dans les règles Firestore.</td></tr>`;
   });
 });
 
@@ -54,10 +54,9 @@ function afficher() {
       <td><span class="tag ${r.presence}">${r.presence === "oui" ? "Présent" : "Absent"}</span></td>
       <td>${esc(r.allergies)}</td>
       <td>${esc(r.chanson)}</td>
-      <td>${esc(r.message)}</td>
       <td style="white-space:nowrap">${dateTxt(r)}</td>
       <td><button class="suppr" data-id="${r.id}" title="Supprimer">✕</button></td>
-    </tr>`).join("") : `<tr><td colspan="7" style="text-align:center;color:var(--doux)">Aucune réponse pour l'instant.</td></tr>`;
+    </tr>`).join("") : `<tr><td colspan="6" style="text-align:center;color:var(--doux)">Aucune réponse pour l'instant.</td></tr>`;
 }
 $("#recherche").addEventListener("input", afficher);
 
@@ -76,7 +75,7 @@ function telecharger(nom, contenu, type) {
 }
 
 $("#btn-csv").addEventListener("click", () => {
-  const cols = ["nom", "presence", "allergies", "chanson", "message"];
+  const cols = ["nom", "presence", "allergies", "chanson"];
   const cell = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
   const lignes = [[...cols, "date"].join(";"), ...reponses.map(r => [...cols.map(c => cell(r[c])), cell(dateTxt(r))].join(";"))];
   telecharger("reponses-mariage.csv", "﻿" + lignes.join("\n"), "text/csv;charset=utf-8");

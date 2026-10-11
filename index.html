@@ -5,85 +5,110 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Narjes & Isiah · 26 juin 2027</title>
   <meta name="description" content="Toutes les infos pour célébrer le mariage de Narjes et Isiah.">
-  <meta property="og:title" content="Narjes & Isiah se marient !">
-  <meta property="og:description" content="Date, lieux, programme et formulaire de réponse.">
+  <meta property="og:title" content="Narjes & Isiah : ready to celebrate ?">
+  <meta property="og:description" content="Déroulé de la journée, lieux, formulaire de réponse et informations.">
   <meta property="og:image" content="photo.jpg">
+  <meta name="theme-color" content="#15101F">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💜</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav class="nav" id="nav">
-  <a href="#accueil" class="nav-logo"><span id="nav-initiales">N & I</span></a>
-  <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="nav-toggle"><span></span><span></span><span></span></button>
+  <a href="#accueil" class="nav-logo" aria-label="Accueil">
+    <svg class="logo" viewBox="0 0 120 120" aria-hidden="true">
+      <defs><linearGradient id="g-logo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#C7B2FF"/><stop offset=".5" stop-color="#FFA8D2"/><stop offset="1" stop-color="#9FD8FF"/></linearGradient></defs>
+      <circle cx="60" cy="60" r="56" fill="none" stroke="url(#g-logo)" stroke-width="4"/>
+      <text x="60" y="74" text-anchor="middle" class="logo-lettre">N&amp;I</text>
+    </svg>
+  </a>
   <ul class="nav-links" id="nav-links">
+    <li><a href="#mot">Notre mot</a></li>
+    <li><a href="#programme">Déroulé</a></li>
     <li><a href="#lieux">Lieux</a></li>
-    <li><a href="#programme">Programme</a></li>
     <li><a href="#rsvp">Réponse</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="#contacts">Contacts</a></li>
+    <li><a href="#infos">Infos</a></li>
   </ul>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="nav-toggle"><span></span><span></span></button>
 </nav>
 
 <!-- ACCUEIL -->
 <header class="hero" id="accueil">
   <img src="photo.jpg" alt="Narjes et Isiah" class="hero-photo">
   <div class="hero-voile"></div>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
   <div class="hero-contenu">
-    <p class="hero-sur">Nous nous marions</p>
-    <h1 class="hero-noms"><span id="nom-a"></span> <span class="esperluette">&</span> <span id="nom-b"></span></h1>
-    <p class="hero-date" id="hero-date"></p>
-    <p class="hero-lieu">Toulouse · Marzens</p>
-    <div class="compteur" id="compteur" aria-label="Compte à rebours">
-      <div><b id="cd-j">–</b><span>jours</span></div>
-      <div><b id="cd-h">–</b><span>heures</span></div>
-      <div><b id="cd-m">–</b><span>minutes</span></div>
+    <p class="chip"><span class="point"></span><span id="hero-date"></span> · <span id="hero-lieu"></span></p>
+    <h1 class="hero-titre">
+      <span class="ligne contour">Ready to</span>
+      <span class="ligne degrade">celebrate&nbsp;?</span>
+    </h1>
+    <div class="hero-bas">
+      <p class="hero-noms"><span id="nom-a"></span> <span class="et">&amp;</span> <span id="nom-b"></span></p>
+      <div class="compteur" id="compteur" aria-label="Compte à rebours">
+        <div><b id="cd-j">–</b><span>jours</span></div>
+        <div><b id="cd-h">–</b><span>heures</span></div>
+        <div><b id="cd-m">–</b><span>min</span></div>
+      </div>
     </div>
-    <a href="#rsvp" class="btn btn-clair">Je réponds</a>
   </div>
-  <a href="#lieux" class="hero-fleche" aria-label="Descendre">⌄</a>
 </header>
 
+<div class="marquee" aria-hidden="true"><div class="marquee-piste" id="marquee"></div></div>
+
 <main>
-  <!-- LIEUX -->
-  <section class="section bg-lavande" id="lieux">
-    <div class="conteneur">
-      <p class="sur-titre">Où ?</p>
-      <h2>Les lieux</h2>
-      <div class="lieux" id="lieux-liste"></div>
+  <!-- 01 UN MOT -->
+  <section class="section" id="mot">
+    <div class="conteneur etroit">
+      <p class="etiquette"><b>01</b> Un mot de notre part</p>
+      <div class="mot apparait">
+        <div id="mot-texte"></div>
+        <p class="mot-signature">— <span id="mot-signature"></span></p>
+      </div>
     </div>
   </section>
 
-  <!-- PROGRAMME -->
-  <section class="section bg-menthe" id="programme">
-    <div class="conteneur etroit">
-      <p class="sur-titre" id="programme-date"></p>
-      <h2>Le programme</h2>
+  <!-- 02 DÉROULÉ -->
+  <section class="section s-sombre" id="programme">
+    <div class="conteneur">
+      <p class="etiquette"><b>02</b> <span id="programme-date"></span></p>
+      <h2 class="titre">Déroulé de <em>la journée</em></h2>
       <ol class="timeline" id="timeline"></ol>
     </div>
   </section>
 
-  <!-- RSVP -->
-  <section class="section bg-ciel" id="rsvp">
+  <!-- 03 LIEUX -->
+  <section class="section" id="lieux">
+    <div class="conteneur">
+      <p class="etiquette"><b>03</b> Où ?</p>
+      <h2 class="titre">Les <em>lieux</em></h2>
+      <div class="lieux" id="lieux-liste"></div>
+    </div>
+  </section>
+
+  <!-- 04 RSVP -->
+  <section class="section s-degrade" id="rsvp">
     <div class="conteneur etroit">
-      <p class="sur-titre">Serez-vous des nôtres ?</p>
-      <h2>Votre réponse</h2>
-      <p class="intro">Merci de répondre avant le <strong id="date-limite"></strong>, <strong>une réponse par personne</strong> : chaque invité remplit son propre formulaire.</p>
+      <p class="etiquette"><b>04</b> Réponse</p>
+      <h2 class="titre">Seras-tu <em>des nôtres&nbsp;?</em></h2>
+      <p class="intro">Merci de répondre avant le <strong id="date-limite"></strong>.<br>
+        <strong>Une réponse par personne</strong> : on demande à chaque invité de remplir le formulaire.</p>
 
       <form class="carte formulaire" id="form-rsvp" novalidate>
         <label class="champ">
-          <span>Votre prénom et nom *</span>
-          <input type="text" name="nom" required autocomplete="name" placeholder="Ex. : Marie Dupont">
+          <span>Ton prénom *</span>
+          <input type="text" name="nom" required autocomplete="name" placeholder="Prénom et nom">
         </label>
 
         <fieldset class="champ">
-          <legend>Serez-vous présent·e ? *</legend>
+          <legend>Seras-tu présent ? *</legend>
           <div class="choix">
-            <label class="pastille"><input type="radio" name="presence" value="oui" required><span>Oui, avec joie !</span></label>
-            <label class="pastille"><input type="radio" name="presence" value="non"><span>Non, désolé·e</span></label>
+            <label class="pastille"><input type="radio" name="presence" value="oui" required><span>Oui 🎉</span></label>
+            <label class="pastille"><input type="radio" name="presence" value="non"><span>Non 😢</span></label>
           </div>
         </fieldset>
 
@@ -93,20 +118,14 @@
             <input type="text" name="allergies" placeholder="Ex. : sans gluten, allergie aux fruits à coque…">
           </label>
           <label class="champ">
-            <span>Votre chanson préférée pour la soirée 🎶</span>
+            <span>Quelle est la chanson qui te fait obligatoirement aller sur la piste ? 🕺</span>
             <input type="text" name="chanson" placeholder="Titre – Artiste">
           </label>
         </div>
 
-        <label class="champ">
-          <span>Un petit mot pour nous ?</span>
-          <textarea name="message" rows="3" placeholder="Facultatif"></textarea>
-        </label>
-
-        <!-- anti-robot : champ invisible -->
         <input type="text" name="site" class="piege" tabindex="-1" autocomplete="off">
 
-        <button type="submit" class="btn" id="btn-envoyer">Envoyer ma réponse</button>
+        <button type="submit" class="btn" id="btn-envoyer">Envoyer ma réponse <span class="fleche">→</span></button>
         <p class="form-statut" id="form-statut" role="status"></p>
       </form>
 
@@ -119,21 +138,23 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section bg-rose" id="faq">
+  <!-- 05 FAQ -->
+  <section class="section" id="faq">
     <div class="conteneur etroit">
-      <p class="sur-titre">Vos questions</p>
-      <h2>FAQ</h2>
+      <p class="etiquette"><b>05</b> Vos questions</p>
+      <h2 class="titre">F<em>A</em>Q</h2>
       <div class="faq" id="faq-liste"></div>
     </div>
   </section>
 
-  <!-- CONTACTS -->
-  <section class="section bg-lavande" id="contacts">
+  <!-- 06 INFORMATIONS -->
+  <section class="section s-sombre" id="infos">
     <div class="conteneur">
-      <p class="sur-titre">Une question, une surprise ?</p>
-      <h2>Nos témoins</h2>
-      <div class="temoins" id="temoins-liste"></div>
+      <p class="etiquette"><b>06</b> À savoir</p>
+      <h2 class="titre"><em>Informations</em></h2>
+      <div class="infos" id="infos-liste"></div>
+      <h3 class="sous-titre">Contacts</h3>
+      <div id="contacts-liste"></div>
     </div>
   </section>
 </main>
@@ -144,6 +165,7 @@
 </footer>
 
 <script src="config.js"></script>
+<script src="firebase-config.js"></script>
 <script type="module" src="app.js"></script>
 </body>
 </html>
