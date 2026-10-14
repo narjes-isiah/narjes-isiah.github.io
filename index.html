@@ -6,175 +6,157 @@
   <title>Narjes & Isiah · 26.06.2027</title>
   <meta name="description" content="Toutes les infos pour célébrer le mariage de Narjes et Isiah.">
   <meta property="og:title" content="Narjes & Isiah · 26.06.2027">
-  <meta property="og:description" content="Ready to celebrate ? Déroulé, lieux, RSVP et infos pratiques.">
+  <meta property="og:description" content="Déroulé de la journée, lieux, RSVP et informations.">
   <meta property="og:image" content="accueil.jpg">
-  <meta name="theme-color" content="#3E1921">
-  <link rel="icon" type="image/png" href="logo-rouge.png">
+  <meta name="theme-color" content="#15101F">
+  <link rel="icon" type="image/png" href="logo-nuit.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
 <nav class="nav" id="nav">
-  <ul class="nav-links">
+  <a href="#accueil" class="nav-logo" aria-label="Accueil">N <span>&amp;</span> I</a>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#mot">Notre mot</a></li>
     <li><a href="#programme">Déroulé</a></li>
     <li><a href="#lieux">Lieux</a></li>
-    <li><a href="#rsvp">RSVP</a></li>
-    <li class="nav-centre"><a href="#accueil" class="nav-logo" aria-label="Accueil">N &amp; I</a></li>
+    <li><a href="#rsvp" class="nav-rsvp">RSVP</a></li>
     <li><a href="#infos">Infos</a></li>
     <li><a href="#contacts">Contacts</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="#accueil" class="nav-logo nav-logo-mobile" aria-label="Accueil">N &amp; I</a>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="nav-toggle"><span></span><span></span></button>
 </nav>
-<div class="menu-mobile" id="menu-mobile">
-  <a href="#mot">Notre mot</a><a href="#programme">Déroulé</a><a href="#lieux">Lieux</a>
-  <a href="#rsvp">RSVP</a><a href="#infos">Infos</a><a href="#contacts">Contacts</a><a href="#faq">FAQ</a>
-</div>
 
-<!-- ACCUEIL (inspiré de « the late checkout ») -->
+<!-- ACCUEIL -->
 <header class="hero" id="accueil">
-  <h1 class="hero-titre" id="hero-titre"><span id="nom-a"></span> <span class="et">&amp;</span> <span id="nom-b"></span></h1>
-  <div class="hero-cadre">
-    <img src="accueil.jpg" alt="Narjes et Isiah" id="hero-img">
-  </div>
-  <div class="hero-bas">
-    <div class="compteur" id="compteur" aria-label="Compte à rebours">
-      <div><b id="cd-j">–</b><span>jours</span></div>
-      <div><b id="cd-h">–</b><span>heures</span></div>
-      <div><b id="cd-m">–</b><span>min</span></div>
-      <div><b id="cd-s">–</b><span>sec</span></div>
+  <img src="accueil.jpg" alt="Narjes et Isiah" class="hero-photo" id="hero-img">
+  <div class="hero-voile"></div>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="hero-contenu" id="hero-contenu">
+    <p class="chip"><span class="point"></span>Toulouse · Save the date</p>
+    <h1 class="hero-titre" id="hero-titre"><span class="degrade" id="nom-a"></span> <span class="et">&amp;</span> <span class="degrade" id="nom-b"></span></h1>
+    <div class="hero-bas">
+      <p class="hero-date" id="hero-date"></p>
+      <div class="compteur" id="compteur" aria-label="Compte à rebours">
+        <div><b id="cd-j">–</b><span>jours</span></div>
+        <div><b id="cd-h">–</b><span>heures</span></div>
+        <div><b id="cd-m">–</b><span>min</span></div>
+        <div><b id="cd-s">–</b><span>sec</span></div>
+      </div>
     </div>
-    <p class="hero-date" id="hero-date"></p>
-    <a href="#mot" class="hero-scroll script">scroll down to explore</a>
   </div>
 </header>
 
 <main>
   <!-- UN MOT -->
-  <section class="section s-creme" id="mot">
+  <section class="section" id="mot">
     <div class="conteneur mot-grille">
-      <div class="mot-titre apparait">
-        <span class="script deco">un mot de notre part</span>
-        <h2 class="grand" id="mot-accroche"></h2>
-      </div>
-      <figure class="mot-photo apparait"><img src="photo.jpg" alt="Narjes et Isiah" loading="lazy"></figure>
       <div class="mot-texte apparait">
+        <p class="etiquette">Un mot de notre part</p>
+        <p class="mot-accroche" id="mot-accroche"></p>
         <div id="mot-texte"></div>
-        <p class="signature script" id="mot-signature"></p>
+        <p class="mot-signature">— <span id="mot-signature"></span></p>
       </div>
-      <img src="logo-rouge.png" alt="" class="mot-logo apparait" loading="lazy">
+      <figure class="mot-photo apparait">
+        <img src="photo.jpg" alt="Narjes et Isiah" loading="lazy">
+        <img src="logo-nuit.png" alt="" class="mot-logo" loading="lazy">
+      </figure>
     </div>
   </section>
 
   <!-- DÉROULÉ -->
-  <section class="section s-sable" id="programme">
-    <div class="conteneur prog-grille">
-      <div class="prog-tete">
-        <p class="petit-titre" id="programme-date"></p>
-        <h2 class="grand"><span class="script deco">le jour J</span>déroulé de la journée</h2>
-      </div>
+  <section class="section s-sombre" id="programme">
+    <div class="conteneur">
+      <p class="etiquette"><span id="programme-date"></span></p>
+      <h2 class="titre">Déroulé de <em>la journée</em></h2>
       <ol class="timeline" id="timeline"></ol>
     </div>
   </section>
 
   <!-- LIEUX -->
-  <section class="section s-creme" id="lieux">
+  <section class="section" id="lieux">
     <div class="conteneur">
-      <div class="tete-centre">
-        <p class="petit-titre">Où ?</p>
-        <h2 class="grand"><span class="script deco">rendez-vous</span>les lieux</h2>
-      </div>
+      <p class="etiquette">Où ?</p>
+      <h2 class="titre">Les <em>lieux</em></h2>
       <div class="lieux" id="lieux-liste"></div>
     </div>
   </section>
 
   <!-- RSVP -->
-  <section class="section s-vin" id="rsvp">
-    <div class="conteneur rsvp-grille">
-      <div class="rsvp-tete">
-        <p class="petit-titre">RSVP</p>
-        <h2 class="grand"><span class="script deco">dis-nous tout</span>seras-tu des&nbsp;nôtres&nbsp;?</h2>
-        <p class="intro">Merci de répondre avant le <strong id="date-limite"></strong>.<br>
-          <strong>Une réponse par personne</strong> : on demande à chaque invité de remplir le formulaire.</p>
-        <img src="logo-creme.png" alt="" class="rsvp-logo" loading="lazy">
-      </div>
+  <section class="section s-degrade" id="rsvp">
+    <div class="conteneur etroit">
+      <p class="etiquette">RSVP</p>
+      <h2 class="titre">Seras-tu <em>des nôtres&nbsp;?</em></h2>
+      <p class="intro">Merci de répondre avant le <strong id="date-limite"></strong>.<br>
+        <strong>Une réponse par personne</strong> : on demande à chaque invité de remplir le formulaire.</p>
 
-      <div class="rsvp-form">
-        <form class="formulaire" id="form-rsvp" novalidate>
-          <label class="champ">
-            <span>Ton prénom *</span>
-            <input type="text" name="nom" required autocomplete="name" placeholder="Prénom et nom">
-          </label>
+      <form class="carte formulaire" id="form-rsvp" novalidate>
+        <label class="champ">
+          <span>Ton prénom *</span>
+          <input type="text" name="nom" required autocomplete="name" placeholder="Prénom et nom">
+        </label>
 
-          <fieldset class="champ">
-            <legend>Seras-tu présent ? *</legend>
-            <div class="choix">
-              <label class="pastille"><input type="radio" name="presence" value="oui" required><span>Oui</span></label>
-              <label class="pastille"><input type="radio" name="presence" value="non"><span>Non</span></label>
-            </div>
-          </fieldset>
-
-          <div id="si-present">
-            <label class="champ">
-              <span>Allergies ou régime alimentaire</span>
-              <input type="text" name="allergies" placeholder="Sans gluten, fruits à coque…">
-            </label>
-            <label class="champ">
-              <span>Quelle est la chanson qui te fait obligatoirement aller sur la piste ? 🕺</span>
-              <input type="text" name="chanson" placeholder="Titre – Artiste">
-            </label>
+        <fieldset class="champ">
+          <legend>Seras-tu présent ? *</legend>
+          <div class="choix">
+            <label class="pastille"><input type="radio" name="presence" value="oui" required><span>Oui 🎉</span></label>
+            <label class="pastille"><input type="radio" name="presence" value="non"><span>Non 😢</span></label>
           </div>
+        </fieldset>
 
-          <input type="text" name="site" class="piege" tabindex="-1" autocomplete="off">
-
-          <button type="submit" class="btn" id="btn-envoyer">Envoyer ma réponse <span>→</span></button>
-          <p class="form-statut" id="form-statut" role="status"></p>
-        </form>
-
-        <div class="merci" id="merci" hidden>
-          <span class="script">merci</span>
-          <h3 id="merci-titre">Merci !</h3>
-          <p id="merci-texte"></p>
-          <button class="btn-lien" id="btn-autre">Répondre pour une autre personne →</button>
+        <div id="si-present">
+          <label class="champ">
+            <span>Allergies ou régime alimentaire</span>
+            <input type="text" name="allergies" placeholder="Ex. : sans gluten, allergie aux fruits à coque…">
+          </label>
+          <label class="champ">
+            <span>Quelle est la chanson qui te fait obligatoirement aller sur la piste ? 🕺</span>
+            <input type="text" name="chanson" placeholder="Titre – Artiste">
+          </label>
         </div>
+
+        <input type="text" name="site" class="piege" tabindex="-1" autocomplete="off">
+
+        <button type="submit" class="btn" id="btn-envoyer">Envoyer ma réponse <span class="fleche">→</span></button>
+        <p class="form-statut" id="form-statut" role="status"></p>
+      </form>
+
+      <div class="carte merci" id="merci" hidden>
+        <p class="merci-coeur">💜</p>
+        <h3 id="merci-titre">Merci !</h3>
+        <p id="merci-texte"></p>
+        <button class="btn btn-lien" id="btn-autre">Répondre pour une autre personne</button>
       </div>
     </div>
   </section>
 
   <!-- NOS PETITES DEMANDES -->
-  <section class="section s-bleu" id="infos">
+  <section class="section s-sombre" id="infos">
     <div class="conteneur">
-      <div class="tete-centre">
-        <p class="petit-titre">À savoir</p>
-        <h2 class="grand"><span class="script deco">avec amour</span>nos petites demandes</h2>
-      </div>
+      <p class="etiquette">À savoir</p>
+      <h2 class="titre">Nos petites <em>demandes</em></h2>
       <div class="infos" id="infos-liste"></div>
     </div>
   </section>
 
   <!-- CONTACTS -->
-  <section class="section s-creme" id="contacts">
+  <section class="section" id="contacts">
     <div class="conteneur">
-      <div class="tete-centre">
-        <p class="petit-titre">Une question ?</p>
-        <h2 class="grand"><span class="script deco">on répond</span>contacts</h2>
-      </div>
+      <p class="etiquette">Une question ?</p>
+      <h2 class="titre"><em>Contacts</em></h2>
       <div id="contacts-liste"></div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="section s-sable" id="faq">
+  <section class="section s-lavande" id="faq">
     <div class="conteneur etroit">
-      <div class="tete-centre">
-        <p class="petit-titre">Vos questions</p>
-        <h2 class="grand"><span class="script deco">tout savoir</span>faq</h2>
-      </div>
+      <p class="etiquette">Vos questions</p>
+      <h2 class="titre">F<em>A</em>Q</h2>
       <div class="faq" id="faq-liste"></div>
     </div>
   </section>
@@ -183,12 +165,11 @@
 <footer class="pied">
   <img src="logo-creme.png" alt="Narjes et Isiah" class="pied-logo" loading="lazy">
   <p class="pied-noms" id="pied-noms"></p>
-  <p class="pied-date" id="pied-date"></p>
-  <p class="script pied-script">see you there</p>
+  <p id="pied-date"></p>
 </footer>
 
-<script src="config.js?v=9"></script>
-<script src="firebase-config.js?v=9"></script>
-<script type="module" src="app.js?v=9"></script>
+<script src="config.js?v=10"></script>
+<script src="firebase-config.js?v=10"></script>
+<script type="module" src="app.js?v=10"></script>
 </body>
 </html>

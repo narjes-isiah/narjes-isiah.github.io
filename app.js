@@ -8,6 +8,7 @@ const fmtLong = d => d.toLocaleDateString("fr-FR", { weekday: "long", day: "nume
 const fmtCourt = d => d.toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
 const deux = n => String(n).padStart(2, "0");
 const fmtPoints = d => `${deux(d.getDate())} . ${deux(d.getMonth() + 1)} . ${d.getFullYear()}`;
+const majuscule = s => s.charAt(0).toUpperCase() + s.slice(1);
 const noms = `${M.maries.a} & ${M.maries.b}`;
 
 /* ---------- Textes ---------- */
@@ -15,7 +16,7 @@ document.title = `${noms} · ${fmtPoints(dateMariage).replace(/ /g, "")}`;
 $("#nom-a").textContent = M.maries.a;
 $("#nom-b").textContent = M.maries.b;
 $("#hero-date").textContent = fmtPoints(dateMariage);
-$("#programme-date").textContent = fmtLong(dateMariage);
+$("#programme-date").textContent = majuscule(fmtLong(dateMariage));
 $("#date-limite").textContent = fmtCourt(dateLimite).replace(/^1 /, "1er ");
 $("#pied-noms").textContent = noms;
 $("#pied-date").textContent = fmtPoints(dateMariage);
@@ -23,7 +24,7 @@ $("#pied-date").textContent = fmtPoints(dateMariage);
 /* ---------- Compte à rebours (avec secondes) ---------- */
 function compteur() {
   const diff = dateMariage - new Date();
-  if (diff <= 0) { $("#compteur").innerHTML = `<div><b>C'est aujourd'hui !</b></div>`; return; }
+  if (diff <= 0) { $("#compteur").innerHTML = `<div><b>C'est le grand jour !</b></div>`; return; }
   $("#cd-j").textContent = Math.floor(diff / 864e5);
   $("#cd-h").textContent = deux(Math.floor(diff / 36e5) % 24);
   $("#cd-m").textContent = deux(Math.floor(diff / 6e4) % 60);
@@ -32,41 +33,43 @@ function compteur() {
 compteur();
 setInterval(compteur, 1000);
 
-/* ---------- Navigation ---------- */
-const nav = $("#nav"), toggle = $("#nav-toggle"), menu = $("#menu-mobile");
-const majNav = () => nav.classList.toggle("solide", window.scrollY > window.innerHeight * 0.75);
-addEventListener("scroll", majNav, { passive: true });
-majNav();
-toggle.addEventListener("click", () => {
-  const ouvert = menu.classList.toggle("ouvert");
-  toggle.setAttribute("aria-expanded", ouvert);
-  document.body.classList.toggle("menu-ouvert", ouvert);
-});
-menu.addEventListener("click", e => {
-  if (e.target.tagName === "A") { menu.classList.remove("ouvert"); toggle.setAttribute("aria-expanded", false); document.body.classList.remove("menu-ouvert"); }
-});
-
-/* ---------- Titre d'accueil : « Narjes & Isiah » sur une ligne, pleine largeur ---------- */
-const titre = $("#hero-titre"), cadre = $(".hero-cadre");
+/* ---------- « Narjes & Isiah » sur une seule ligne, en très grand ---------- */
+const titre = $("#hero-titre");
 function ajusterTitre() {
-  const cs = getComputedStyle(titre.parentElement);
-  const dispo = titre.parentElement.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+  const dispo = $("#hero-contenu").clientWidth;
   titre.style.fontSize = "100px";
-  const taille = Math.min(100 * dispo / titre.getBoundingClientRect().width, window.innerHeight * 0.3);
+  const taille = Math.min(100 * dispo / titre.getBoundingClientRect().width, window.innerHeight * 0.26);
   titre.style.fontSize = taille + "px";
-  cadre.style.fontSize = taille + "px";
 }
 ajusterTitre();
 addEventListener("resize", ajusterTitre);
 document.fonts?.ready.then(ajusterTitre);
 
-/* ---------- Léger zoom de la photo au défilement ---------- */
-const heroImg = $("#hero-img");
-const calme = matchMedia("(prefers-reduced-motion: reduce)").matches;
-if (!calme) addEventListener("scroll", () => {
-  const y = Math.min(window.scrollY, window.innerHeight);
-  heroImg.style.transform = `scale(${1 + y / 2500}) translateY(${y * 0.06}px)`;
-}, { passive: true });
+/* ---------- Navigation ---------- */
+const nav = $("#nav"), toggle = $("#nav-toggle"), liens = $("#nav-links");
+const majNav = () => nav.classList.toggle("solide", window.scrollY > window.innerHeight * 0.6);
+addEventListener("scroll", majNav, { passive: true });
+majNav();
+toggle.addEventListener("click", () => {
+  const ouvert = liens.classList.toggle("ouvert");
+  toggle.setAttribute("aria-expanded", ouvert);
+});
+liens.addEventListener("click", e => { if (e.target.tagName === "A") { liens.classList.remove("ouvert"); toggle.setAttribute("aria-expanded", false); } });
+
+/* ---------- Icônes ---------- */
+const svg = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const ICONES = {
+  home:  svg('<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>'),
+  rings: svg('<circle cx="9" cy="14" r="5.5"/><circle cx="15" cy="14" r="5.5"/><path d="M10 4.5l2-2 2 2-2 2z"/>'),
+  heart: svg('<path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/>'),
+  glass: svg('<path d="M6 3h5l-.5 6a2 2 0 0 1-4 0zM13 3h5l.5 6a2 2 0 0 1-4 0zM8.5 11v8M15.5 11v8M6 21h5M13 21h5"/>'),
+  diner: svg('<path d="M5 3v7a2 2 0 0 0 4 0V3M7 10v11M17 21V3c-2 1.5-3 4-3 7h3"/>'),
+  party: svg('<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>'),
+  phone: svg('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>'),
+  sms:   svg('<path d="M4 5h16v11H9l-5 4z"/>'),
+  repos: svg('<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>'),
+  photo: svg('<rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l1.5-3h5L16 7"/><path d="M3 3l18 18"/>')
+};
 
 /* ---------- Un mot de notre part ---------- */
 const [accroche, ...suite] = M.motDesMaries || [];
@@ -74,44 +77,46 @@ $("#mot-accroche").textContent = accroche || "";
 $("#mot-texte").innerHTML = suite.map(p => `<p>${esc(p)}</p>`).join("");
 $("#mot-signature").textContent = M.signature || noms;
 
-/* ---------- Déroulé ---------- */
-$("#timeline").innerHTML = M.programme.map(p => `
-  <li class="etape apparait${p.icone === "party" ? " fete" : ""}">
+/* ---------- Déroulé (vertical) ---------- */
+$("#timeline").innerHTML = M.programme.map((p, i) => `
+  <li class="etape apparait ${p.icone === "party" ? "t4" : "t" + (i % 4)}">
     <span class="etape-heure">${esc(p.heure)}</span>
     <div class="etape-corps">
-      <h3 class="etape-titre">${esc(p.titre)}</h3>
+      <p class="etape-titre">${esc(p.titre)}</p>
       ${p.description ? `<p class="etape-desc">${esc(p.description)}</p>` : ""}
       <p class="etape-lieu">${p.itineraire
-        ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.lieu)}" target="_blank" rel="noopener">${esc(p.lieu)} ↗</a>`
+        ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.lieu)}" target="_blank" rel="noopener">📍 ${esc(p.lieu)}</a>`
         : esc(p.lieu)}</p>
     </div>
+    <span class="etape-icone">${ICONES[p.icone] || ICONES.heart}</span>
   </li>`).join("");
 
 /* ---------- Lieux ---------- */
 $("#lieux-liste").innerHTML = M.lieux.map((l, i) => {
   const q = encodeURIComponent(l.adresse);
   return `
-  <article class="lieu apparait">
-    <div class="lieu-carte">
-      <iframe loading="lazy" title="Plan : ${esc(l.titre)}" referrerpolicy="no-referrer-when-downgrade"
-        src="https://maps.google.com/maps?q=${q}&z=${i === 0 ? 16 : 13}&output=embed"></iframe>
+  <article class="carte lieu apparait">
+    <iframe loading="lazy" title="Plan : ${esc(l.titre)}" referrerpolicy="no-referrer-when-downgrade"
+      src="https://maps.google.com/maps?q=${q}&z=${i === 0 ? 16 : 13}&output=embed"></iframe>
+    <div class="lieu-corps">
       <span class="lieu-badge">${esc(l.badge || "")}</span>
-    </div>
-    <h3>${esc(l.titre)}</h3>
-    <p class="lieu-sous">${esc(l.sousTitre)}</p>
-    <p class="lieu-adresse">${esc(l.adresse)}</p>
-    <ul>${l.acces.map(a => `<li>${esc(a)}</li>`).join("")}</ul>
-    <div class="lieu-liens">
-      <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${q}">Google Maps</a>
-      <a target="_blank" rel="noopener" href="https://waze.com/ul?q=${q}&navigate=yes">Waze</a>
-      <a target="_blank" rel="noopener" href="https://maps.apple.com/?q=${q}">Plans</a>
+      <h3>${esc(l.titre)}</h3>
+      <p class="lieu-sous">${esc(l.sousTitre)}</p>
+      <p class="lieu-adresse">${esc(l.adresse)}</p>
+      <ul>${l.acces.map(a => `<li>${esc(a)}</li>`).join("")}</ul>
+      <div class="lieu-actions">
+        <a class="btn btn-secondaire" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${q}">Google Maps</a>
+        <a class="btn btn-secondaire" target="_blank" rel="noopener" href="https://waze.com/ul?q=${q}&navigate=yes">Waze</a>
+        <a class="btn btn-secondaire" target="_blank" rel="noopener" href="https://maps.apple.com/?q=${q}">Plans (Apple)</a>
+      </div>
     </div>
   </article>`;
 }).join("");
 
 /* ---------- Nos petites demandes ---------- */
 $("#infos-liste").innerHTML = (M.infos || []).map(b => `
-  <article class="info apparait">
+  <article class="carte info apparait">
+    <div class="info-icone">${ICONES[b.icone] || ICONES.heart}</div>
     <h3>${esc(b.titre)}</h3>
     ${b.texte.map(t => `<p>${esc(t)}</p>`).join("")}
   </article>`).join("");
@@ -119,25 +124,31 @@ $("#infos-liste").innerHTML = (M.infos || []).map(b => `
 /* ---------- Contacts ---------- */
 const groupes = {};
 M.contacts.forEach(t => (groupes[t.groupe] ||= []).push(t));
-$("#contacts-liste").innerHTML = `<div class="contacts">${Object.entries(groupes).map(([groupe, liste]) => `
-  <div class="contact-groupe apparait">
-    <p class="petit-titre">${esc(groupe)}</p>
-    ${liste.map(t => {
+$("#contacts-liste").innerHTML = `<div class="temoins-groupes">${Object.entries(groupes).map(([groupe, liste]) => `
+  <div class="temoins-groupe apparait">
+    <h4>${esc(groupe)}</h4>
+    <div class="temoins-grille">${liste.map(t => {
       const intl = "+33" + t.tel.replace(/\s/g, "").slice(1);
       return `
-      <div class="contact">
-        <p class="contact-nom">${esc(t.nom)}</p>
-        <p class="contact-tel">${esc(t.tel)}</p>
-        <p class="contact-liens"><a href="tel:${intl}">Appeler</a><a href="sms:${intl}">SMS</a></p>
+      <div class="temoin">
+        <div class="avatar">${esc(t.nom[0])}</div>
+        <div class="temoin-infos">
+          <p class="temoin-nom">${esc(t.nom)}</p>
+          <p class="temoin-tel">${esc(t.tel)}</p>
+        </div>
+        <div class="temoin-actions">
+          <a class="rond" href="tel:${intl}" aria-label="Appeler ${esc(t.nom)}">${ICONES.phone}</a>
+          <a class="rond" href="sms:${intl}" aria-label="Envoyer un SMS à ${esc(t.nom)}">${ICONES.sms}</a>
+        </div>
       </div>`;
-    }).join("")}
+    }).join("")}</div>
   </div>`).join("")}</div>`;
 
 /* ---------- FAQ ---------- */
 $("#faq-liste").innerHTML = M.faq.map((f, i) => `
   <details class="apparait"${i === 0 ? " open" : ""}>
     <summary>${esc(f.q)}</summary>
-    <p>${f.r ? esc(f.r) : `<em>Bientôt complété…</em>`}${f.couleurs ? `<span class="couleurs">${f.couleurs.map(c => `<i style="background:${esc(c)}"></i>`).join("")}</span>` : ""}</p>
+    <p>${f.r ? esc(f.r) : `<em class="a-venir">Bientôt complété ✨</em>`}${f.couleurs ? `<span class="couleurs">${f.couleurs.map(c => `<i style="background:${esc(c)}"></i>`).join("")}</span>` : ""}</p>
   </details>`).join("");
 
 /* ---------- Apparitions au défilement ---------- */
@@ -193,7 +204,7 @@ form.addEventListener("submit", async e => {
   };
 
   const btn = $("#btn-envoyer");
-  btn.disabled = true; btn.firstChild.textContent = "Envoi… ";
+  btn.disabled = true;
   try {
     await initFirebase();
     await fs.addDoc(fs.collection(db, "rsvp"), { ...reponse, creeLe: fs.serverTimestamp() });
@@ -205,13 +216,14 @@ form.addEventListener("submit", async e => {
     $("#merci-texte").textContent = presence === "oui"
       ? `On a hâte de te retrouver le ${fmtCourt(dateMariage)} !`
       : "Tu vas nous manquer. Merci d'avoir pris le temps de répondre.";
+    merci.scrollIntoView({ behavior: "smooth", block: "center" });
   } catch (err) {
     console.error(err);
     erreur(err.message === "config"
       ? "Le formulaire n'est pas encore activé. Contacte un témoin en attendant."
       : "Oups, l'envoi a échoué. Vérifie ta connexion et réessaie.");
   } finally {
-    btn.disabled = false; btn.firstChild.textContent = "Envoyer ma réponse ";
+    btn.disabled = false;
   }
 });
 
