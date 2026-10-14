@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -29,9 +29,10 @@
     <li><a href="#mot">Notre mot</a></li>
     <li><a href="#programme">Déroulé</a></li>
     <li><a href="#lieux">Lieux</a></li>
-    <li><a href="#rsvp">Réponse</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#rsvp">RSVP</a></li>
     <li><a href="#infos">Infos</a></li>
+    <li><a href="#contacts">Contacts</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
   <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="nav-toggle"><span></span><span></span></button>
 </nav>
@@ -58,13 +59,12 @@
   </div>
 </header>
 
-<div class="marquee" aria-hidden="true"><div class="marquee-piste" id="marquee"></div></div>
 
 <main>
   <!-- 01 UN MOT -->
   <section class="section" id="mot">
     <div class="conteneur etroit">
-      <p class="etiquette"><b>01</b> Un mot de notre part</p>
+      <p class="etiquette">Un mot de notre part</p>
       <div class="mot apparait">
         <div id="mot-texte"></div>
         <p class="mot-signature">— <span id="mot-signature"></span></p>
@@ -75,7 +75,7 @@
   <!-- 02 DÉROULÉ -->
   <section class="section s-sombre" id="programme">
     <div class="conteneur">
-      <p class="etiquette"><b>02</b> <span id="programme-date"></span></p>
+      <p class="etiquette"><span id="programme-date"></span></p>
       <h2 class="titre">Déroulé de <em>la journée</em></h2>
       <ol class="timeline" id="timeline"></ol>
     </div>
@@ -84,7 +84,7 @@
   <!-- 03 LIEUX -->
   <section class="section" id="lieux">
     <div class="conteneur">
-      <p class="etiquette"><b>03</b> Où ?</p>
+      <p class="etiquette">Où ?</p>
       <h2 class="titre">Les <em>lieux</em></h2>
       <div class="lieux" id="lieux-liste"></div>
     </div>
@@ -93,7 +93,7 @@
   <!-- 04 RSVP -->
   <section class="section s-degrade" id="rsvp">
     <div class="conteneur etroit">
-      <p class="etiquette"><b>04</b> Réponse</p>
+      <p class="etiquette">RSVP</p>
       <h2 class="titre">Seras-tu <em>des nôtres&nbsp;?</em></h2>
       <p class="intro">Merci de répondre avant le <strong id="date-limite"></strong>.<br>
         <strong>Une réponse par personne</strong> : on demande à chaque invité de remplir le formulaire.</p>
@@ -138,25 +138,33 @@
     </div>
   </section>
 
-  <!-- 05 FAQ -->
-  <section class="section" id="faq">
+  <!-- NOS PETITES DEMANDES -->
+  <section class="section s-sombre" id="infos">
+    <div class="conteneur">
+      <p class="etiquette">À savoir</p>
+      <h2 class="titre">Nos petites <em>demandes</em></h2>
+      <div class="infos" id="infos-liste"></div>
+    </div>
+  </section>
+
+  <!-- CONTACTS -->
+  <section class="section" id="contacts">
+    <div class="conteneur">
+      <p class="etiquette">Une question ?</p>
+      <h2 class="titre"><em>Contacts</em></h2>
+      <div id="contacts-liste"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section s-lavande" id="faq">
     <div class="conteneur etroit">
-      <p class="etiquette"><b>05</b> Vos questions</p>
+      <p class="etiquette">Vos questions</p>
       <h2 class="titre">F<em>A</em>Q</h2>
       <div class="faq" id="faq-liste"></div>
     </div>
   </section>
 
-  <!-- 06 INFORMATIONS -->
-  <section class="section s-sombre" id="infos">
-    <div class="conteneur">
-      <p class="etiquette"><b>06</b> À savoir</p>
-      <h2 class="titre"><em>Informations</em></h2>
-      <div class="infos" id="infos-liste"></div>
-      <h3 class="sous-titre">Contacts</h3>
-      <div id="contacts-liste"></div>
-    </div>
-  </section>
 </main>
 
 <footer class="pied">
@@ -164,8 +172,8 @@
   <p id="pied-date"></p>
 </footer>
 
-<script src="config.js"></script>
-<script src="firebase-config.js"></script>
-<script type="module" src="app.js"></script>
+<script src="config.js?v=6"></script>
+<script src="firebase-config.js?v=6"></script>
+<script type="module" src="app.js?v=6"></script>
 </body>
 </html>

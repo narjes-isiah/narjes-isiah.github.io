@@ -49,6 +49,7 @@ liens.addEventListener("click", e => { if (e.target.tagName === "A") { liens.cla
 /* ---------- Icônes ---------- */
 const svg = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
 const ICONES = {
+  home:  svg('<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>'),
   rings: svg('<circle cx="9" cy="14" r="5.5"/><circle cx="15" cy="14" r="5.5"/><path d="M10 4.5l2-2 2 2-2 2z"/>'),
   heart: svg('<path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/>'),
   glass: svg('<path d="M6 3h5l-.5 6a2 2 0 0 1-4 0zM13 3h5l.5 6a2 2 0 0 1-4 0zM8.5 11v8M15.5 11v8M6 21h5M13 21h5"/>'),
@@ -66,19 +67,17 @@ $("#mot-signature").textContent = M.signature || noms;
 
 /* ---------- Déroulé ---------- */
 $("#timeline").innerHTML = M.programme.map((p, i) => `
-  <li class="etape apparait t${i % 5}">
-    <div class="etape-haut">
-      <span class="etape-heure">${esc(p.heure)}${p.fin ? `<small> → ${esc(p.fin)}</small>` : ""}</span>
-      <span class="etape-icone">${ICONES[p.icone] || ICONES.heart}</span>
+  <li class="etape apparait ${p.icone === "party" ? "t4" : "t" + (i % 4)}">
+    <span class="etape-heure">${esc(p.heure)}</span>
+    <div class="etape-corps">
+      <p class="etape-titre">${esc(p.titre)}</p>
+      ${p.description ? `<p class="etape-desc">${esc(p.description)}</p>` : ""}
+      <p class="etape-lieu">${p.itineraire
+        ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.lieu)}" target="_blank" rel="noopener">📍 ${esc(p.lieu)}</a>`
+        : esc(p.lieu)}</p>
     </div>
-    <p class="etape-titre">${esc(p.titre)}</p>
-    <p class="etape-lieu">${esc(p.lieu)}</p>
+    <span class="etape-icone">${ICONES[p.icone] || ICONES.heart}</span>
   </li>`).join("");
-
-/* ---------- Bandeau défilant ---------- */
-const motsBandeau = ["Ready to celebrate ?", noms, fmtCourt(dateMariage), M.ville || "", "Let's party"].filter(Boolean);
-const ligneBandeau = motsBandeau.map(m => `<span>${esc(m)}</span><i>✦</i>`).join("");
-$("#marquee").innerHTML = ligneBandeau.repeat(4);
 
 /* ---------- Lieux ---------- */
 $("#lieux-liste").innerHTML = M.lieux.map((l, i) => {

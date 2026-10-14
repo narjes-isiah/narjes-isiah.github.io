@@ -101,10 +101,11 @@ h1, h2, h3, h4 { margin: 0; }
 /* ---------- SECTIONS ---------- */
 .section { padding: clamp(80px, 11vw, 140px) 20px; position: relative; }
 .s-sombre { background: var(--nuit); color: #fff; }
+.s-lavande { background: #EEE8FA; }
 .s-degrade { background: radial-gradient(60% 50% at 10% 10%, rgba(199,178,255,.55), transparent 70%), radial-gradient(50% 50% at 90% 30%, rgba(255,168,210,.45), transparent 70%), radial-gradient(60% 60% at 50% 100%, rgba(159,216,255,.45), transparent 70%), var(--creme); }
 .conteneur { max-width: 1100px; margin: 0 auto; }
 .conteneur.etroit { max-width: 760px; }
-.etiquette { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; padding: 6px 14px 6px 6px; border-radius: 999px; background: #fff; border: 1px solid #E7E0F0; font-weight: 500; font-size: .9rem; color: var(--doux); }
+.etiquette { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px; padding: 7px 16px; border-radius: 999px; background: #fff; border: 1px solid #E7E0F0; font-weight: 500; font-size: .9rem; color: var(--doux); }
 .etiquette b { display: grid; place-items: center; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; background: var(--nuit); color: #fff; font-size: .8rem; }
 .s-sombre .etiquette { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.14); color: #CFC7DE; }
 .s-sombre .etiquette b { background: var(--grad); color: var(--nuit); }
@@ -135,21 +136,27 @@ h1, h2, h3, h4 { margin: 0; }
 .mot .mot-accroche { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.02; letter-spacing: -.035em; color: var(--encre); margin-bottom: 1.6rem; }
 .mot-signature { font-family: var(--display); font-weight: 600; font-size: 1.4rem !important; color: var(--violet) !important; margin-top: 1.6rem !important; }
 
-/* ---------- DÉROULÉ (cartes bento) ---------- */
-.timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
-.etape { grid-column: span 2; border-radius: var(--r); padding: 26px 24px; color: var(--nuit); min-height: 210px; display: flex; flex-direction: column; transition: transform .3s ease; }
-.etape:hover { transform: translateY(-6px) rotate(-.6deg); }
-.etape:nth-child(4), .etape:nth-child(5) { grid-column: span 3; }
+/* ---------- DÉROULÉ (vertical, étape par étape) ---------- */
+.timeline { list-style: none; margin: 0 auto; padding: 0 0 0 34px; max-width: 860px; display: grid; gap: 16px; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 9px; top: 20px; bottom: 20px; width: 3px; border-radius: 3px; background: linear-gradient(var(--lavande), var(--rose), var(--ciel), var(--menthe), var(--pourpre)); }
+.etape {
+  position: relative; display: grid; grid-template-columns: 150px 1fr auto; align-items: center; gap: 22px;
+  border-radius: var(--r); padding: 24px 26px; color: var(--nuit); transition: transform .3s ease;
+}
+.etape::before { content: ""; position: absolute; left: -32px; top: 50%; width: 17px; height: 17px; margin-top: -8.5px; border-radius: 50%; background: inherit; border: 3px solid var(--nuit); box-shadow: 0 0 0 2px rgba(255,255,255,.35); }
+.etape:hover { transform: translateX(6px); }
 .t0 { background: var(--lavande); } .t1 { background: var(--rose); } .t2 { background: var(--ciel); } .t3 { background: var(--menthe); }
-.t4 { background: linear-gradient(135deg, var(--violet), var(--pourpre) 55%, var(--bordeaux)); color: #fff; }
-.etape-haut { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: auto; }
-.etape-heure { font-family: var(--display); font-weight: 800; font-size: clamp(2.4rem, 4.6vw, 3.4rem); line-height: 1; letter-spacing: -.04em; }
-.etape-heure small { font-size: .5em; letter-spacing: -.02em; opacity: .8; }
-.etape-icone { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.55); flex: 0 0 auto; }
+.t4 { background: linear-gradient(120deg, var(--violet), var(--pourpre) 55%, var(--bordeaux)); color: #fff; }
+.t4::before { background: var(--pourpre); }
+.etape-heure { font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 4.4vw, 3.2rem); line-height: 1; letter-spacing: -.04em; }
+.etape-corps { min-width: 0; }
+.etape-titre { font-family: var(--display); font-weight: 800; font-size: 1.45rem; letter-spacing: -.02em; line-height: 1.15; margin: 0 0 4px; }
+.etape-desc { margin: 0 0 6px; font-size: .98rem; opacity: .85; }
+.etape-lieu { margin: 0; opacity: .8; font-size: .95rem; font-weight: 500; }
+.etape-lieu a { text-decoration: underline; text-underline-offset: 3px; }
+.etape-icone { width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.55); }
 .t4 .etape-icone { background: rgba(255,255,255,.18); }
-.etape-icone svg { width: 22px; height: 22px; }
-.etape-titre { font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: -.02em; margin: 24px 0 2px; }
-.etape-lieu { margin: 0; opacity: .75; font-size: .95rem; }
+.etape-icone svg { width: 24px; height: 24px; }
 
 /* ---------- LIEUX ---------- */
 .lieux { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
@@ -244,7 +251,7 @@ input:focus, textarea:focus { outline: none; border-color: var(--violet); backgr
 /* ---------- APPARITION ---------- */
 .apparait { opacity: 0; transform: translateY(36px) scale(.98); transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); }
 .apparait.visible { opacity: 1; transform: none; }
-.etape.apparait.visible:hover { transform: translateY(-6px) rotate(-.6deg); }
+.etape.apparait.visible:hover { transform: translateX(6px); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; }
   .apparait { opacity: 1; transform: none; }
@@ -257,18 +264,19 @@ input:focus, textarea:focus { outline: none; border-color: var(--violet); backgr
   .hero-contenu { padding-bottom: 40px; }
   .contour { -webkit-text-stroke: 1.5px rgba(255,255,255,.9); }
   .compteur div { min-width: 72px; }
-  .timeline { grid-template-columns: 1fr 1fr; }
-  .etape, .etape:nth-child(4) { grid-column: span 1; min-height: 180px; padding: 20px 18px; }
-  .etape:nth-child(5) { grid-column: span 2; }
-  .etape-titre { font-size: 1.2rem; }
+  .timeline { padding-left: 26px; }
+  .timeline::before { left: 5px; }
+  .etape { grid-template-columns: 1fr auto; gap: 8px 14px; padding: 20px; }
+  .etape::before { left: -28px; }
+  .etape-heure { grid-column: 1; grid-row: 1; font-size: 2.2rem; }
+  .etape-icone { grid-column: 2; grid-row: 1; width: 42px; height: 42px; }
+  .etape-corps { grid-column: 1 / -1; }
+  .etape-titre { font-size: 1.25rem; }
   .lieux, .infos, .temoins-groupes { grid-template-columns: 1fr; }
   .choix { grid-template-columns: 1fr 1fr; }
   .formulaire .btn { justify-self: stretch; }
 }
-@media (max-width: 400px) {
-  .etape-icone { width: 38px; height: 38px; }
-  .etape-heure { font-size: 2rem; }
-}
+
 
 /* ---------- ADMIN ---------- */
 .admin { max-width: 1100px; margin: 0 auto; padding: 40px 20px 80px; }
@@ -293,3 +301,13 @@ th { font-weight: 700; color: var(--doux); font-size: .75rem; letter-spacing: .1
 .tag.non { background: var(--rose); }
 .suppr { background: none; border: 0; cursor: pointer; color: #B9A9C4; font-size: 1.1rem; }
 .suppr:hover { color: var(--bordeaux); }
+
+/* ---------- CONTACTS (fond clair) ---------- */
+#contacts .temoin { background: #fff; color: var(--encre); border: 1px solid #ECE6F3; }
+#contacts .temoin:hover { background: #fff; box-shadow: 0 16px 30px -20px rgba(60,30,100,.4); }
+#contacts .temoin-tel { color: var(--doux); }
+#contacts .temoins-groupe h4 { color: var(--violet); }
+#contacts .rond { background: var(--creme); color: var(--nuit); }
+#contacts .rond:hover { background: var(--nuit); color: #fff; }
+#infos .infos { margin-bottom: 0; }
+#faq .titre em, #contacts .titre em { background: linear-gradient(100deg, var(--violet), var(--pourpre) 50%, var(--bleu)); -webkit-background-clip: text; background-clip: text; }
