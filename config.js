@@ -13,7 +13,7 @@ window.MARIAGE = {
   // Section « Un mot de notre part » (chaque ligne = un paragraphe)
   motDesMaries: [
     "Rendez-vous sous le soleil du Sud-Ouest pour célébrer, bien manger, profiter et partager beaucoup d'amour.",
-    "Le 26 juin 2027, on se dit oui, et on a hâte de vivre ce moment entouré·e·s de celles et ceux qu'on aime. Tu trouveras ici tout ce qu'il faut savoir pour profiter pleinement de la journée.",
+    "Le 26 juin 2027, on se dit oui, et on a hâte de vivre ce moment entourés de celles et ceux qu'on aime. Tu trouveras ici tout ce qu'il faut savoir pour profiter pleinement de la journée.",
     "On a hâte de te retrouver, de trinquer et de danser avec toi !"
   ],
   signature: "Narjes & Isiah",
@@ -21,7 +21,7 @@ window.MARIAGE = {
   programme: [
     { heure: "11h00", titre: "Rendez-vous chez les parents de la mariée",
       description: "On commence les festivités comme le veut la tradition, avant de partir tous ensemble vers la mairie.",
-      lieu: "4 chemin du Parget, 31770 Colomiers", itineraire: true, icone: "home" },
+      lieu: "Colomiers", icone: "home" },
     { heure: "12h00", titre: "Mariage civil",    lieu: "Mairie de Toulouse",  icone: "rings" },
     { heure: "17h00", titre: "Cérémonie laïque", lieu: "La Bélonie, Marzens", icone: "heart" },
     { heure: "18h45", titre: "Vin d'honneur",    lieu: "La Bélonie, Marzens", icone: "glass" },
@@ -30,6 +30,16 @@ window.MARIAGE = {
   ],
 
   lieux: [
+    {
+      badge: "Rendez-vous",
+      titre: "Domicile de Narjes",
+      sousTitre: "Chez les parents de la mariée",
+      adresse: "4 chemin du Parget, 31770 Colomiers",
+      acces: [
+        "Rendez-vous à 11h00",
+        "Départ tous ensemble vers la mairie"
+      ]
+    },
     {
       badge: "Mariage civil",
       titre: "Mairie de Toulouse",
@@ -83,7 +93,7 @@ window.MARIAGE = {
   infos: [
     {
       titre: "À l'approche du jour J",
-      icone: "repos",
+      icone: "zen",
       texte: [
         "Après plus d'un an à préparer notre mariage, on a vraiment envie de se reposer et de profiter sereinement des derniers instants et du jour J.",
         "On aimerait qu'à J-7, toutes les questions de logistique soient envoyées aux témoins ou à la wedding planner.",

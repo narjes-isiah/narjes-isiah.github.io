@@ -9,9 +9,7 @@
 | `firebase-config.js` | Les 6 codes Firebase (à remplir une seule fois) |
 | `style.css` / `app.js` | Design et fonctionnement |
 | `admin.html` / `admin.js` | Espace mariés (connexion) : liste des réponses, compteurs, export Excel, playlist |
-| `accueil.jpg` | La photo de la page d'accueil |
-| `photo.jpg` | La photo de la section « Un mot de notre part » |
-| `logo-nuit.png` / `logo-creme.png` | Votre logo (illustration) en deux couleurs |
+| `accueil.jpg` | Image affichée quand on partage le lien (WhatsApp, SMS…) |
 | `firestore.rules` | Règles de sécurité à copier dans Firebase |
 
 ## 1. Mettre en ligne sur GitHub Pages

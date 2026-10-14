@@ -8,12 +8,12 @@
   <meta property="og:title" content="Narjes & Isiah · 26.06.2027">
   <meta property="og:description" content="Déroulé de la journée, lieux, RSVP et informations.">
   <meta property="og:image" content="accueil.jpg">
-  <meta name="theme-color" content="#15101F">
-  <link rel="icon" type="image/png" href="logo-nuit.png">
+  <meta name="theme-color" content="#3E1921">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233E1921'/><text x='50' y='66' font-size='44' text-anchor='middle' fill='%23EDE1D1' font-family='Arial Black'>N&amp;I</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;900&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=11">
 </head>
 <body>
 
@@ -33,12 +33,12 @@
 
 <!-- ACCUEIL -->
 <header class="hero" id="accueil">
-  <img src="accueil.jpg" alt="Narjes et Isiah" class="hero-photo" id="hero-img">
-  <div class="hero-voile"></div>
-  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
   <div class="hero-contenu" id="hero-contenu">
-    <p class="chip"><span class="point"></span>Toulouse · Save the date</p>
-    <h1 class="hero-titre" id="hero-titre"><span class="degrade" id="nom-a"></span> <span class="et">&amp;</span> <span class="degrade" id="nom-b"></span></h1>
+    <h1 class="hero-titre" id="hero-titre">
+      <span class="ligne" id="nom-a"></span>
+      <span class="ligne"><span class="et">&amp;</span><span id="nom-b"></span></span>
+    </h1>
     <div class="hero-bas">
       <p class="hero-date" id="hero-date"></p>
       <div class="compteur" id="compteur" aria-label="Compte à rebours">
@@ -54,17 +54,11 @@
 <main>
   <!-- UN MOT -->
   <section class="section" id="mot">
-    <div class="conteneur mot-grille">
-      <div class="mot-texte apparait">
-        <p class="etiquette">Un mot de notre part</p>
-        <p class="mot-accroche" id="mot-accroche"></p>
-        <div id="mot-texte"></div>
-        <p class="mot-signature">— <span id="mot-signature"></span></p>
-      </div>
-      <figure class="mot-photo apparait">
-        <img src="photo.jpg" alt="Narjes et Isiah" loading="lazy">
-        <img src="logo-nuit.png" alt="" class="mot-logo" loading="lazy">
-      </figure>
+    <div class="conteneur etroit mot apparait">
+      <p class="etiquette">Un mot de notre part</p>
+      <p class="mot-accroche" id="mot-accroche"></p>
+      <div id="mot-texte"></div>
+      <p class="mot-signature">— <span id="mot-signature"></span></p>
     </div>
   </section>
 
@@ -163,13 +157,12 @@
 </main>
 
 <footer class="pied">
-  <img src="logo-creme.png" alt="Narjes et Isiah" class="pied-logo" loading="lazy">
-  <p class="pied-noms" id="pied-noms"></p>
-  <p id="pied-date"></p>
+  <p class="pied-logo">N <span>&amp;</span> I</p>
+  <p class="pied-date" id="pied-date"></p>
 </footer>
 
-<script src="config.js?v=10"></script>
-<script src="firebase-config.js?v=10"></script>
-<script type="module" src="app.js?v=10"></script>
+<script src="config.js?v=11"></script>
+<script src="firebase-config.js?v=11"></script>
+<script type="module" src="app.js?v=11"></script>
 </body>
 </html>

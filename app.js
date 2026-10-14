@@ -15,10 +15,9 @@ const noms = `${M.maries.a} & ${M.maries.b}`;
 document.title = `${noms} · ${fmtPoints(dateMariage).replace(/ /g, "")}`;
 $("#nom-a").textContent = M.maries.a;
 $("#nom-b").textContent = M.maries.b;
-$("#hero-date").textContent = fmtPoints(dateMariage);
+$("#hero-date").textContent = majuscule(fmtCourt(dateMariage).replace(/ (\w)/, (m, c) => " " + c.toUpperCase()));
 $("#programme-date").textContent = majuscule(fmtLong(dateMariage));
 $("#date-limite").textContent = fmtCourt(dateLimite).replace(/^1 /, "1er ");
-$("#pied-noms").textContent = noms;
 $("#pied-date").textContent = fmtPoints(dateMariage);
 
 /* ---------- Compte à rebours (avec secondes) ---------- */
@@ -33,12 +32,13 @@ function compteur() {
 compteur();
 setInterval(compteur, 1000);
 
-/* ---------- « Narjes & Isiah » sur une seule ligne, en très grand ---------- */
+/* ---------- Prénoms l'un sous l'autre, le plus grand possible ---------- */
 const titre = $("#hero-titre");
 function ajusterTitre() {
   const dispo = $("#hero-contenu").clientWidth;
   titre.style.fontSize = "100px";
-  const taille = Math.min(100 * dispo / titre.getBoundingClientRect().width, window.innerHeight * 0.26);
+  const large = Math.max(...[...titre.querySelectorAll(".ligne")].map(l => l.getBoundingClientRect().width));
+  const taille = Math.min(100 * dispo / large, window.innerHeight * 0.24);
   titre.style.fontSize = taille + "px";
 }
 ajusterTitre();
@@ -67,6 +67,7 @@ const ICONES = {
   party: svg('<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>'),
   phone: svg('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>'),
   sms:   svg('<path d="M4 5h16v11H9l-5 4z"/>'),
+  zen:   svg('<circle cx="12" cy="4.5" r="2"/><path d="M12 7.5v5"/><path d="M12 9.5c-2 0-3.5 1-4.5 2.5M12 9.5c2 0 3.5 1 4.5 2.5"/><path d="M7.5 12l2 1.5M16.5 12l-2 1.5"/><path d="M4 19c2-2.5 5-3.2 8-3.2s6 .7 8 3.2"/><path d="M6.5 19.5c2 .9 3.8 1.2 5.5 1.2s3.5-.3 5.5-1.2"/>'),
   repos: svg('<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>'),
   photo: svg('<rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l1.5-3h5L16 7"/><path d="M3 3l18 18"/>')
 };
@@ -97,7 +98,7 @@ $("#lieux-liste").innerHTML = M.lieux.map((l, i) => {
   return `
   <article class="carte lieu apparait">
     <iframe loading="lazy" title="Plan : ${esc(l.titre)}" referrerpolicy="no-referrer-when-downgrade"
-      src="https://maps.google.com/maps?q=${q}&z=${i === 0 ? 16 : 13}&output=embed"></iframe>
+      src="https://maps.google.com/maps?q=${q}&z=${/Bélonie/.test(l.titre) ? 13 : 15}&output=embed"></iframe>
     <div class="lieu-corps">
       <span class="lieu-badge">${esc(l.badge || "")}</span>
       <h3>${esc(l.titre)}</h3>
@@ -146,7 +147,7 @@ $("#contacts-liste").innerHTML = `<div class="temoins-groupes">${Object.entries(
 
 /* ---------- FAQ ---------- */
 $("#faq-liste").innerHTML = M.faq.map((f, i) => `
-  <details class="apparait"${i === 0 ? " open" : ""}>
+  <details class="apparait">
     <summary>${esc(f.q)}</summary>
     <p>${f.r ? esc(f.r) : `<em class="a-venir">Bientôt complété ✨</em>`}${f.couleurs ? `<span class="couleurs">${f.couleurs.map(c => `<i style="background:${esc(c)}"></i>`).join("")}</span>` : ""}</p>
   </details>`).join("");
