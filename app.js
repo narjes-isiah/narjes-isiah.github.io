@@ -38,7 +38,7 @@ function ajusterTitre() {
   const dispo = $("#hero-contenu").clientWidth;
   titre.style.fontSize = "100px";
   const large = Math.max(...[...titre.querySelectorAll(".ligne")].map(l => l.getBoundingClientRect().width));
-  const taille = Math.min(100 * dispo / large, window.innerHeight * 0.24);
+  const taille = Math.min(100 * dispo * 0.82 / large, window.innerHeight * 0.155);
   titre.style.fontSize = taille + "px";
 }
 ajusterTitre();
@@ -67,7 +67,7 @@ const ICONES = {
   party: svg('<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>'),
   phone: svg('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>'),
   sms:   svg('<path d="M4 5h16v11H9l-5 4z"/>'),
-  zen:   svg('<circle cx="12" cy="4.5" r="2"/><path d="M12 7.5v5"/><path d="M12 9.5c-2 0-3.5 1-4.5 2.5M12 9.5c2 0 3.5 1 4.5 2.5"/><path d="M7.5 12l2 1.5M16.5 12l-2 1.5"/><path d="M4 19c2-2.5 5-3.2 8-3.2s6 .7 8 3.2"/><path d="M6.5 19.5c2 .9 3.8 1.2 5.5 1.2s3.5-.3 5.5-1.2"/>'),
+  zen:   svg('<path d="M3 18V8"/><path d="M3 14h18v4"/><path d="M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11.5" r="1.8"/><path d="M14 3.5h3l-3 3h3"/><path d="M18.5 1.5h2l-2 2h2"/>'),
   repos: svg('<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>'),
   photo: svg('<rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l1.5-3h5L16 7"/><path d="M3 3l18 18"/>')
 };
