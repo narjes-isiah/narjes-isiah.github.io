@@ -63,9 +63,9 @@ function suivante() {
     cartes = [...cartes.slice(1), devant];
     cartes.forEach((c, i) => { c.dataset.pos = Math.min(i, 3); });
     devant.classList.remove("sortie");
-  }, 650);
+  }, 900);
 }
-if (cartes.length > 1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) setInterval(suivante, 1000);
+if (cartes.length > 1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) setInterval(suivante, 2500);
 
 /* ---------- Navigation ---------- */
 const nav = $("#nav"), toggle = $("#nav-toggle"), liens = $("#nav-links");
