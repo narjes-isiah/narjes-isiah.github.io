@@ -12,7 +12,7 @@ window.MARIAGE = {
 
   // Photos du carrousel polaroid (page d'accueil) — légende facultative
   polaroids: [
-    { src: "polaroid-1.jpg", legende: "" },
+    { src: "polaroid-1.jpg", legende: "Indonésie" },
     { src: "polaroid-2.jpg", legende: "" },
     { src: "polaroid-3.jpg", legende: "New York" },
     { src: "polaroid-4.jpg", legende: "Abou Simbel" },
