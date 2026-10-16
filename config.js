@@ -15,7 +15,7 @@ window.MARIAGE = {
     { src: "polaroid-1.jpg", legende: "Indonésie" },
     { src: "polaroid-2.jpg", legende: "Love" },
     { src: "polaroid-3.jpg", legende: "New York" },
-    { src: "polaroid-4.jpg", legende: "Abou Simbel" },
+    { src: "polaroid-4.jpg", legende: "Égypte" },
     { src: "polaroid-5.jpg", legende: "Paris" }
   ],
 
