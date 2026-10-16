@@ -10,6 +10,15 @@ window.MARIAGE = {
   dateLimiteReponse: "2027-03-01",
   ville: "Toulouse",
 
+  // Photos du carrousel polaroid (page d'accueil) — légende facultative
+  polaroids: [
+    { src: "polaroid-1.jpg", legende: "" },
+    { src: "polaroid-2.jpg", legende: "" },
+    { src: "polaroid-3.jpg", legende: "New York" },
+    { src: "polaroid-4.jpg", legende: "Abou Simbel" },
+    { src: "polaroid-5.jpg", legende: "Paris" }
+  ],
+
   // Section « Un mot de notre part » (chaque ligne = un paragraphe)
   motDesMaries: [
     "Rendez-vous sous le soleil du Sud-Ouest pour célébrer, bien manger, profiter et partager beaucoup d'amour.",

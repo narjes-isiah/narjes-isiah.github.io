@@ -10,6 +10,7 @@
 | `style.css` / `app.js` | Design et fonctionnement |
 | `admin.html` / `admin.js` | Espace mariés (connexion) : liste des réponses, compteurs, export Excel, playlist |
 | `accueil.jpg` | Image affichée quand on partage le lien (WhatsApp, SMS…) |
+| `polaroid-1.jpg` … `polaroid-5.jpg` | Photos du carrousel de la page d'accueil (liste et légendes dans `config.js`) |
 | `firestore.rules` | Règles de sécurité à copier dans Firebase |
 
 ## 1. Mettre en ligne sur GitHub Pages

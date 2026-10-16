@@ -35,15 +35,37 @@ setInterval(compteur, 1000);
 /* ---------- Prénoms l'un sous l'autre, le plus grand possible ---------- */
 const titre = $("#hero-titre");
 function ajusterTitre() {
-  const dispo = $("#hero-contenu").clientWidth;
+  const haut = $(".hero-haut"), pol = $("#polaroids");
+  const cote = getComputedStyle(haut).flexDirection === "row";
+  const dispo = cote ? haut.clientWidth - pol.offsetWidth - 60 : haut.clientWidth;
   titre.style.fontSize = "100px";
   const large = Math.max(...[...titre.querySelectorAll(".ligne")].map(l => l.getBoundingClientRect().width));
-  const taille = Math.min(100 * dispo * 0.82 / large, window.innerHeight * 0.155);
+  const taille = Math.min(100 * dispo * (cote ? 1 : 0.82) / large, window.innerHeight * (cote ? 0.2 : 0.155));
   titre.style.fontSize = taille + "px";
 }
 ajusterTitre();
 addEventListener("resize", ajusterTitre);
 document.fonts?.ready.then(ajusterTitre);
+
+/* ---------- Carrousel polaroid ---------- */
+const pile = $("#polaroids");
+const photos = M.polaroids || [];
+pile.innerHTML = photos.map((p, i) => `
+  <figure class="polaroid" data-pos="${Math.min(i, 3)}">
+    <img src="${esc(p.src)}" alt="Narjes et Isiah" ${i > 1 ? 'loading="lazy"' : ""}>
+    <figcaption>${esc(p.legende || "")}</figcaption>
+  </figure>`).join("");
+let cartes = [...pile.children];
+function suivante() {
+  const devant = cartes[0];
+  devant.classList.add("sortie");
+  setTimeout(() => {
+    cartes = [...cartes.slice(1), devant];
+    cartes.forEach((c, i) => { c.dataset.pos = Math.min(i, 3); });
+    devant.classList.remove("sortie");
+  }, 1300);
+}
+if (cartes.length > 1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) setInterval(suivante, 4800);
 
 /* ---------- Navigation ---------- */
 const nav = $("#nav"), toggle = $("#nav-toggle"), liens = $("#nav-links");
