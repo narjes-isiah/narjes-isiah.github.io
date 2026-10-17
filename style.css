@@ -318,3 +318,23 @@ th { font-weight: 700; color: var(--doux); font-size: .75rem; letter-spacing: .1
 .tag.non { background: var(--bleu); color: var(--vin); }
 .suppr { background: none; border: 0; cursor: pointer; color: var(--doux); font-size: 1.1rem; }
 .suppr:hover { color: var(--orange); }
+
+/* ---------- Alternance des fonds : vin / crème ---------- */
+/* RSVP sur fond vin */
+#rsvp .intro { color: rgba(237,225,209,.75); }
+#rsvp .intro strong { color: var(--creme); }
+#rsvp .carte { background: var(--creme); border-color: transparent; }
+#rsvp .btn { background: var(--orange); }
+#rsvp .btn .fleche { background: var(--creme); color: var(--orange); }
+#rsvp .merci { color: var(--vin); }
+/* Nos petites demandes sur fond crème : cartes bordeaux */
+#infos .info { background: var(--vin); border-color: transparent; }
+/* Contacts sur fond vin */
+#contacts .temoins-groupe h4 { color: var(--bleu); }
+#contacts .temoin { background: rgba(237,225,209,.07); border-color: rgba(237,225,209,.16); color: var(--creme); }
+#contacts .temoin-tel { color: rgba(237,225,209,.7); }
+#contacts .rond { background: rgba(237,225,209,.1); border-color: rgba(237,225,209,.18); color: var(--creme); }
+#contacts .rond:hover { background: var(--orange); color: var(--creme); }
+/* FAQ sur fond crème */
+#faq .faq details { background: var(--voile); border-color: var(--trait); }
+#faq .faq details[open] { background: var(--creme); }
