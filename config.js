@@ -13,10 +13,12 @@ window.MARIAGE = {
   // Photos du carrousel polaroid (page d'accueil) — légende facultative
   polaroids: [
     { src: "polaroid-1.jpg", legende: "Indonésie" },
-    { src: "polaroid-2.jpg", legende: "Love" },
     { src: "polaroid-3.jpg", legende: "New York" },
     { src: "polaroid-4.jpg", legende: "Égypte" },
-    { src: "polaroid-5.jpg", legende: "Paris" }
+    { src: "polaroid-5.jpg", legende: "Paris" },
+    { src: "polaroid-6.jpg", legende: "Canada" },
+    { src: "polaroid-7.jpg", legende: "Tchéquie" },
+    { src: "polaroid-8.jpg", legende: "Thaïlande" }
   ],
 
   // Section « Un mot de notre part » (chaque ligne = un paragraphe)
@@ -31,11 +33,11 @@ window.MARIAGE = {
     { heure: "11h00", titre: "Rendez-vous chez les parents de la mariée",
       description: "On commence les festivités comme le veut la tradition, avant de partir tous ensemble vers la mairie.",
       lieu: "Colomiers", icone: "home" },
-    { heure: "12h00", titre: "Mariage civil", description: "Le moment officiel, celui où on signe pour de bon. Ensuite, petite pause avant de prendre la route pour Marzens.", lieu: "Mairie de Toulouse", icone: "rings" },
+    { heure: "12h00", titre: "Mariage civil", description: "Le moment officiel, celui où on va (enfin) signer notre engagement commun. Ensuite, ce sera le petit moment photo pour nous et petite pause pour vous.", lieu: "Mairie de Toulouse", icone: "rings" },
     { heure: "17h00", titre: "Cérémonie laïque", description: "Un moment partagé, tous ensemble pour honorer l'amour et notre histoire.", lieu: "La Bélonie, Marzens", icone: "heart" },
     { heure: "18h45", titre: "Vin d'honneur", description: "On trinque, on grignote et on profite enfin d'être tous réunis.", lieu: "La Bélonie, Marzens", icone: "glass" },
     { heure: "20h00", titre: "Dîner", description: "On passe à table ! Installez-vous, profitez, on s'occupe du reste.", lieu: "La Bélonie, Marzens", icone: "diner" },
-    { heure: "23h00", titre: "Let's party", description: "La piste est ouverte : on compte sur vous pour danser jusqu'au bout de la nuit.", lieu: "La Bélonie, Marzens", icone: "party" }
+    { heure: "23h00", titre: "Let's party", description: "La piste est ouverte : on compte sur vous pour danser et s'enjailler jusqu'au bout de la nuit.", lieu: "La Bélonie, Marzens", icone: "party" }
   ],
 
   lieux: [
