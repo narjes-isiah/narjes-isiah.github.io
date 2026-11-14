@@ -63,9 +63,14 @@ function suivante() {
     cartes = [...cartes.slice(1), devant];
     cartes.forEach((c, i) => { c.dataset.pos = Math.min(i, 3); });
     devant.classList.remove("sortie");
-  }, 900);
+  }, 700);
 }
-if (cartes.length > 1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) setInterval(suivante, 2500);
+if (cartes.length > 1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  // ne tourne que lorsque l'onglet est visible et que l'accueil est à l'écran
+  let visibleAccueil = true;
+  new IntersectionObserver(([e]) => { visibleAccueil = e.isIntersecting; }).observe(pile);
+  setInterval(() => { if (!document.hidden && visibleAccueil) suivante(); }, 2500);
+}
 
 /* ---------- Navigation ---------- */
 const nav = $("#nav"), toggle = $("#nav-toggle"), liens = $("#nav-links");
@@ -173,16 +178,6 @@ $("#faq-liste").innerHTML = M.faq.map((f, i) => `
     <summary>${esc(f.q)}</summary>
     <p>${f.r ? esc(f.r) : `<em class="a-venir">Bientôt complété ✨</em>`}${f.couleurs ? `<span class="couleurs">${f.couleurs.map(c => `<i style="background:${esc(c)}"></i>`).join("")}</span>` : ""}</p>
   </details>`).join("");
-
-/* ---------- Apparitions au défilement ---------- */
-const obs = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); }
-}), { threshold: 0.12 });
-document.querySelectorAll(".apparait").forEach(el => {
-  const freres = [...el.parentElement.children].filter(x => x.classList.contains("apparait"));
-  el.style.transitionDelay = `${(freres.indexOf(el) % 6) * 90}ms`;
-  obs.observe(el);
-});
 
 /* ---------- Formulaire RSVP ---------- */
 const form = $("#form-rsvp"), statut = $("#form-statut"), blocPresent = $("#si-present");
